@@ -16,7 +16,7 @@
   }
 }
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,4 +24,95 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+} */
+nav {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.navbarContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu {
+  grid-area: menu;
+  margin-right: 30px;
+
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'menu header header header header '
+    'menu content1 content1 content1 content1 '
+}
+
+.header {
+  grid-area: header;
+}
+
+.content {
+  grid-area: content1;
+  /* width: 31vw; */
+}
+
+.content1 {
+  grid-area: content1;
+  height: 70vh;
+  width: 20vw;
+}
+
+.cards {
+  margin-top: 35px;
+  /* height: 100px; */
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+}
+
+.header1 {
+  display: grid;
+  grid-template-areas:
+    'menu main main main main main'
+    'menu right right right right right';
+}
+
+.item2 {
+  grid-area: menu;
+  display: flex;
+  justify-content: center;
+}
+
+.item3 {
+  grid-area: main;
+}
+
+.item4 {
+  grid-area: right;
+}
+
+.dashboard{
+  display: grid;
+  grid-template-areas:
+  'sidebar contentOfSidebar contentOfSidebar contentOfSidebar contentOfSidebar'
+}
+
+.sidebar{
+  grid-area: sidebar;
+}
+.contentOfSidebar{
+  grid-area: contentOfSidebar;
+}
+.role1{
+  cursor: pointer;
+}
+.role1:hover{
+  background-color: antiquewhite;
 }
