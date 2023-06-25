@@ -5,15 +5,16 @@ import { AiFillDatabase, AiOutlineUsergroupDelete, AiOutlineVerticalAlignBottom,
 import ReactMarkdown from 'react-markdown';
 
 
-const Modal = ({ isVisible, onClose, selectedItem }) => {
-    if (!isVisible) return null;
-    const [selectedDiv, setSelectedDiv] = useState(null);
+const Modal = ({ isVisible, onClose, selectedItem }:any) => {
+    // if (!isVisible) return null;
+    const [selectedDiv, setSelectedDiv] = useState("");
     const [editableContent, setEditableContent] = useState('Markdown Supported here..');
     const [editableNote, setEditableNote] = useState('');
-
     const [isEditing, setIsEditing] = useState(false);
+    if (!isVisible) return null;
 
-    const handleButtonClick = (selected) => {
+
+    const handleButtonClick = (selected: any) => {
         console.log(selected)
         setSelectedDiv(selected);
     };
@@ -23,10 +24,10 @@ const Modal = ({ isVisible, onClose, selectedItem }) => {
     const handleSaveClick = () => {
         setIsEditing(false);
     };
-    const handleInputChange = (event) => {
+    const handleInputChange = (event : any) => {
         setEditableContent(event.target.value);
     };
-    const handleEditNote = (event) => {
+    const handleEditNote = (event: any) => {
         setEditableNote(event.target.value);
     }
 

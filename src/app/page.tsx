@@ -12,7 +12,23 @@ const Column = dynamic(() => import("./Column"), { ssr: false });
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-  const initialData = {
+  interface Task {
+    id: number;
+    content: string;
+  }
+  
+  interface Column {
+    id: string;
+    title: string;
+    taskIds: number[];
+  }
+  
+  interface InitialData {
+    tasks: { [taskId: number]: Task };
+    columns: { [columnId: string]: Column };
+    columnOrder: string[];
+  }
+  const obj : InitialData = {
     tasks: {
       1: { id: 1, content: "Application is saved" },
       2: { id: 2, content: "Application is Applied" },
@@ -43,7 +59,7 @@ export default function Home() {
     },
     columnOrder: ["saved", "applied", "inprogress", "offer"]
   };
-  const ondragend = (result) => {
+  const ondragend = (result : any) => {
     const { destination, source } = result;
     //droping unknown place
     if (!destination) return;
@@ -87,7 +103,7 @@ export default function Home() {
     }
 
   };
-  const [state, setState] = useState(initialData)
+  const [state, setState] = useState(obj)
   return (
     <Fragment>
       <div>
@@ -152,9 +168,9 @@ export default function Home() {
           </div>
           <DragDropContext onDragEnd={ondragend}>
             <div className='flex gap-3'>
-              {state.columnOrder.map((columnId) => {
+              {state.columnOrder.map((columnId : any) => {
                 const column = state.columns[columnId];
-                const tasks = column.taskIds.map((taskId) => state.tasks[taskId]);
+                const tasks = column.taskIds.map((taskId : any) => state.tasks[taskId]);
 
                 return <Column key={column.id} column={column} task={tasks} />;
               })}

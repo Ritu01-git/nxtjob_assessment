@@ -4,7 +4,7 @@ import { Draggable, Droppable, DragDropContext } from 'react-beautiful-dnd';
 import { AiTwotoneAppstore } from "react-icons/ai";
 import Modal from './Modal';
 
-const Column = ({ column, task }) => {
+const Column = ({ column, task } : any) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   return (
@@ -17,7 +17,7 @@ const Column = ({ column, task }) => {
           <Droppable droppableId={column.id}>
             {(droppableProvided, droppableSnapshot) => (
               <div ref={droppableProvided.innerRef} {...droppableProvided.droppableProps}>
-                {task.map((task, index) => (
+                {task.map((task: any, index: any) => (
                   <Draggable key={task.id} draggableId={`${task.id}`} index={index} >
                     {(draggebleProvided, draggableSnapshot) => (
                       <div className="flex items-center justify-around max-w-sm cards rounded overflow-hidden bg-white"
